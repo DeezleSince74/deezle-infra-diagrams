@@ -15,8 +15,8 @@ nodes and line ends, pan and zoom, switch dark and light themes, search for a no
   - `state-diagram` — state machines and lifecycles.
 - **A tool, `render_architecture`,** that draws the diagram inline in the conversation and
   can also save it as one self-contained `.html` file that works offline.
-- **`/diagram <file>`** to render a `.mmd` file, a Terraform, Pulumi or Bicep (ARM) export,
-  or a folder of Terraform files.
+- **`/diagram <file>`** to render a `.mmd` file, a Terraform, Pulumi, Bicep (ARM) or
+  CloudFormation export, or a folder of Terraform files.
 - **`/import-icons <folder>`** to use the official AWS, Azure or Google Cloud icons you
   downloaded yourself (see [Official cloud icons](#official-cloud-icons)).
 - **`/ask-deezle-infra-diagrams`** for help and examples.
@@ -54,10 +54,26 @@ In Claude Code, add "save it to ./diagrams/" to get an `.html` file you can open
 - **Reads only what you name.** `/diagram` and `/import-icons` read the file or folder you
   give them.
 - **No sign-in.** It asks for no accounts and reads no environment variables.
-- To diagram live Azure resources, Claude may suggest you run `az group export` yourself.
-  That uses your own Azure sign-in; the plugin never runs it.
+- To diagram what's running in your cloud, Claude may suggest an export command for your
+  cloud's CLI (see [Diagram what's running in your cloud](#diagram-whats-running-in-your-cloud)).
+  You run it with your own sign-in; the plugin never runs it.
 
 See [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md).
+
+## Diagram what's running in your cloud
+
+Use a cloud CLI already? Export what's deployed to a file, then render the file. The plugin
+reads only that file and never calls your cloud.
+
+| Cloud | Export with | Then |
+| --- | --- | --- |
+| Azure | `az group export --name <resource-group> > azure.json` | `/diagram azure.json` |
+| Google Cloud | `gcloud beta resource-config bulk-export --project=<project-id> --resource-format=terraform --path=gcp-export` | `/diagram gcp-export` |
+| AWS | The CloudFormation IaC generator, then `aws cloudformation get-generated-template --generated-template-name <name> --format JSON --query TemplateBody --output text > aws.json` | `/diagram aws.json` |
+
+The Google Cloud export is a preview feature that needs the Config Connector component and
+the Cloud Asset API. You can also render Terraform (`terraform show -json`), Pulumi
+(`pulumi stack export`) and CloudFormation templates (JSON or YAML) directly.
 
 ## Where it works
 

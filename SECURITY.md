@@ -24,5 +24,7 @@ for a security problem. You can expect a first reply within 7 days.
   Icons are drawn as images, so SVG code would not run in any case.
 - **It needs no sign-in.** It reads no environment variables and asks for no account details.
 
-The skills may suggest commands you run yourself, such as `az group export` to export
-Azure resources. Those commands use your own Azure sign-in and are never run by the server.
+The skills may suggest export commands you run yourself with your cloud's CLI, such as
+`az group export`, `gcloud beta resource-config bulk-export` or
+`aws cloudformation get-generated-template`. Those commands use your own cloud sign-in. The
+server never runs them, and it reads only the file they produce.

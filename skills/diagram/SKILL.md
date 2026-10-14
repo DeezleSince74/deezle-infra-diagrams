@@ -1,6 +1,6 @@
 ---
 name: diagram
-description: Render a Mermaid architecture-beta, erDiagram, flowchart, or stateDiagram-v2 file, or an IaC export (Terraform/Pulumi/Bicep ARM), to an interactive HTML diagram.
+description: Render a Mermaid architecture-beta, erDiagram, flowchart, or stateDiagram-v2 file, or an IaC export (Terraform/Pulumi/Bicep ARM/CloudFormation), to an interactive HTML diagram.
 disable-model-invocation: true
 ---
 
@@ -13,7 +13,8 @@ Target: $ARGUMENTS
 1. If `$ARGUMENTS` is empty, ask the user what to render — a `.mmd` file (Mermaid
    `architecture-beta`, `erDiagram`, `flowchart`/`graph`, **or** `stateDiagram-v2` — the
    type is auto-detected), an IaC export (Terraform `terraform show -json`, Pulumi
-   `pulumi stack export`, or ARM JSON from `az bicep build`), or a **directory** to scan as
+   `pulumi stack export`, ARM JSON from `az bicep build`, or a CloudFormation template in
+   JSON or YAML), or a **directory** to scan as
    a codebase (recursively parses Terraform `.tf` source, surfacing third-party providers a
    state export may miss). They can also paste Mermaid to pipe via stdin. Pass a directory
    path the same way as a file. For an ER data model, the user can also just describe it (or

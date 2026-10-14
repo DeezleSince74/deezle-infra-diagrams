@@ -2,7 +2,7 @@
 name: architecture-beta
 description: >-
   Author Mermaid architecture-beta cloud-infrastructure diagrams with valid
-  AWS/Azure/GCP icon refs, and render them (or a Terraform/Pulumi/Bicep export)
+  AWS/Azure/GCP icon refs, and render them (or a Terraform/Pulumi/Bicep/CloudFormation export)
   to an interactive HTML diagram. Use when the user wants to draw or diagram
   cloud architecture, sketch an AWS/Azure/GCP system, or turn infrastructure-as-code
   into a picture.
@@ -13,9 +13,18 @@ description: >-
 Help the user produce a cloud-infrastructure diagram. There are two paths:
 
 1. **Author from intent** — write `architecture-beta` source yourself, then render it.
-2. **From IaC** — render a Terraform / Pulumi / Bicep export directly. To diagram **live
-   Azure** resources, first export them: `az group export --name <rg> > rg.json` (needs
-   `az login` + the **Reader** role on that group), then render `rg.json` like any IaC file.
+2. **From IaC** — render a Terraform / Pulumi / Bicep (ARM) / CloudFormation (JSON or YAML)
+   export directly. To diagram what's **already running** in a cloud, the user exports it
+   with the cloud CLI they already use and are signed in to, then you render the file:
+   - **Azure CLI:** `az group export --name <rg> > rg.json` (an ARM template).
+   - **Google Cloud CLI:** `gcloud beta resource-config bulk-export --project=<id>
+     --resource-format=terraform --path=gcp-export` (a folder of `.tf` files; a preview
+     feature that needs the Config Connector component and the Cloud Asset API).
+   - **AWS CLI:** build a template with the CloudFormation IaC generator, then
+     `aws cloudformation get-generated-template --generated-template-name <name>
+     --format JSON --query TemplateBody --output text > aws.json`.
+   The user runs these themselves; never run a sign-in for them. The plugin only reads
+   the file and never calls a cloud.
 3. **Scan a codebase** — point the renderer at a **directory** and it recursively scans
    Terraform `.tf` source (skipping `.terraform/`, `node_modules`, etc.), surfacing every
    declared resource — including **third-party** providers (Datadog, Cloudflare, …) a
@@ -124,8 +133,9 @@ Pick the one that fits the surface:
    ```
 
    `<input>` is a `.mmd` file, a Terraform `terraform show -json` / Pulumi
-   `pulumi stack export` / ARM (from `az bicep build`) JSON export, or omit it to
-   pipe `architecture-beta` on stdin. IaC JSON is auto-detected and converted first.
+   `pulumi stack export` / ARM (from `az bicep build`) JSON export, a CloudFormation
+   template (JSON or YAML), or omit it to pipe `architecture-beta` on stdin. IaC input is
+   auto-detected and converted first.
    **Output saves to the user's Downloads folder by default** (filename from the input
    or `--title`); pass `-o "<folder-or-path>"` for a chosen location (parents are
    created), or `-o -` to stream to stdout. Defaults to **dark + card**; add

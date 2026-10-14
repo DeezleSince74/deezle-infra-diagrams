@@ -26,7 +26,8 @@ Three ways to get architecture in:
    `architecture-beta` skill has the syntax, arrow semantics (`-->`, `<-->`, `--`), and
    the ~1,500 valid icon refs (read its `references/icons.md` before guessing a ref).
 2. **Import IaC** — a Terraform (`terraform show -json`), Pulumi (`pulumi stack export`),
-   or Bicep/ARM (`az bicep build` → ARM JSON) export. Auto-detected and converted.
+   Bicep/ARM (`az bicep build` → ARM JSON) export, or a CloudFormation template (JSON or
+   YAML). Auto-detected and converted.
 3. **Scan a codebase** — pass a **directory**; it recursively scans Terraform `.tf`
    source, surfacing third-party providers a state export might miss.
 
@@ -108,20 +109,26 @@ or **toggle all connectors** (ER). Notation choices survive dark ↔ light toggl
   (icon · provider·service · name).
 - Map to: MCP `theme` / `style`; CLI `--theme dark|light` / `--simple`. Default: dark + card.
 
-## Diagram LIVE Azure resources
+## Diagram what's running in your cloud
 
-To diagram what's actually deployed (not a template file), export it first. This needs the
-**Azure CLI**, `az login`, and at least the **Reader** role on the resource group /
-subscription — the plugin makes no Azure calls itself:
+If the user works with a cloud's CLI, the plugin can draw what's actually deployed, not just
+template files. The user exports it with the CLI they already use and are signed in to; the
+plugin only reads the file it produces and never calls a cloud. The user runs these commands
+themselves. Never run a sign-in for them.
 
-```bash
-az login
-az group export --name <RESOURCE_GROUP> > azure-rg.json
-```
+| Cloud | Export command | Then |
+| --- | --- | --- |
+| Azure | `az group export --name <RESOURCE_GROUP> > azure-rg.json` (needs at least the Reader role on that group) | `/diagram azure-rg.json` |
+| Google Cloud | `gcloud beta resource-config bulk-export --project=<PROJECT_ID> --resource-format=terraform --path=gcp-export` | `/diagram gcp-export` |
+| AWS | Build a template with the CloudFormation IaC generator, then `aws cloudformation get-generated-template --generated-template-name <NAME> --format JSON --query TemplateBody --output text > aws.json` | `/diagram aws.json` |
 
-Then render `azure-rg.json` like any IaC export: `/diagram azure-rg.json`.
+Notes: Azure exports one resource group at a time. The Google Cloud export is a preview
+feature: it needs the Config Connector component (`gcloud components install
+config-connector`) and the Cloud Asset API, and doesn't run on Windows. AWS users who manage
+infrastructure with Terraform, Pulumi or CloudFormation templates can also render those
+directly (`terraform show -json`, `pulumi stack export`, or the template file).
 
 ---
 
 After the relevant help, offer to do the next concrete thing for them — author a diagram
-from a description, render a file they name, or walk through the Azure export.
+from a description, render a file they name, or walk through exporting from their cloud's CLI.

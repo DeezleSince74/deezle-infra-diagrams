@@ -2,6 +2,11 @@
 
 All notable changes to deezle-infra-diagrams. Versions follow [Semantic Versioning](https://semver.org).
 
+## 1.0.1 — 2026-10
+
+- **CloudFormation.** Render AWS CloudFormation templates in JSON or YAML, including CDK output and templates from the CloudFormation IaC generator. `DependsOn`, `Ref`, `Fn::GetAtt` and `Fn::Sub` references become lines; short-form YAML tags such as `!Ref` are read.
+- **Diagram what's running in your cloud.** The docs and skills now show how to export from the Azure, Google Cloud or AWS command-line tool you already use, then render the file. You run the export with your own sign-in; the plugin only reads the file and never calls a cloud.
+
 ## 1.0.0 — 2026-10
 
 First public release, and the first listed in the Anthropic plugin directory.
