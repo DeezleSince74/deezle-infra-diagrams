@@ -18,5 +18,7 @@
     "terraform",
     "cloud",
     "open-source"
-  ]
+  ],
+  "privacyPolicyUrl": "https://github.com/DeezleSince74/deezle-infra-diagrams/blob/main/PRIVACY.md",
+  "documentationUrl": "https://github.com/DeezleSince74/deezle-infra-diagrams#readme"
 }
