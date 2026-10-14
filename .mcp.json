@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "deezle-infra-diagrams": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/server/deezle-infra-diagrams.mjs",
+        "mcp"
+      ]
+    }
+  }
+}

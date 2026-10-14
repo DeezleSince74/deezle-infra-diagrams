@@ -1,0 +1,17 @@
+{
+  "name": "deezle-infra-diagrams",
+  "owner": {
+    "name": "Derek Frempong"
+  },
+  "metadata": {
+    "description": "Interactive Mermaid diagrams for Claude: cloud architecture, data models, flowcharts and state machines."
+  },
+  "plugins": [
+    {
+      "name": "deezle-infra-diagrams",
+      "source": "./",
+      "description": "Turn Mermaid diagrams into interactive, draggable HTML pages: cloud architecture (architecture-beta, with open-source Simple Icons and Lucide icons), data models (erDiagram), flowcharts and state machines. Also renders Terraform, Pulumi and Bicep exports. Runs locally with no network access.",
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "deezle-infra-diagrams",
+  "description": "Turn Mermaid diagrams into interactive, draggable HTML pages: cloud architecture (architecture-beta, with open-source Simple Icons and Lucide icons), data models (erDiagram), flowcharts and state machines. Also renders Terraform, Pulumi and Bicep exports. Runs locally with no network access.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Derek Frempong"
+  },
+  "homepage": "https://github.com/DeezleSince74/deezle-infra-diagrams",
+  "repository": "https://github.com/DeezleSince74/deezle-infra-diagrams",
+  "license": "MIT",
+  "keywords": [
+    "mermaid",
+    "diagram",
+    "architecture",
+    "flowchart",
+    "erd",
+    "state-machine",
+    "terraform",
+    "cloud",
+    "open-source"
+  ]
+}
