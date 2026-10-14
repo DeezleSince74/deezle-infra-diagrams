@@ -5,6 +5,9 @@ architecture, a data model, a flowchart or a state machine. Claude writes it in
 [Mermaid](https://mermaid.js.org) and this plugin draws it as an interactive diagram: drag
 nodes and line ends, pan and zoom, switch dark and light themes, search for a node, and export PNG or SVG.
 
+**User manual:** the [Deezle Infra Diagrams user manual](https://madewithdeezle.com/downloads/deezle-infra-diagrams-manual.pdf)
+(PDF, 1.3 MB) walks through every diagram type with examples.
+
 ## What you get
 
 - **Skills** that teach Claude to write correct Mermaid for four kinds of diagram:
@@ -121,4 +124,5 @@ owners and are used only to name the services. See [ATTRIBUTION.md](ATTRIBUTION.
 
 Open an issue at
 [github.com/DeezleSince74/deezle-infra-diagrams/issues](https://github.com/DeezleSince74/deezle-infra-diagrams/issues).
-Changes are listed in [CHANGELOG.md](CHANGELOG.md).
+The [user manual (PDF)](https://madewithdeezle.com/downloads/deezle-infra-diagrams-manual.pdf)
+covers each diagram type step by step. Changes are listed in [CHANGELOG.md](CHANGELOG.md).
