@@ -4,6 +4,7 @@ All notable changes to deezle-infra-diagrams. Versions follow [Semantic Versioni
 
 ## 1.0.2 — 2026-10
 
+- **Fix: the server crashed on start in 1.0.1.** The YAML reader added for CloudFormation called `require("process")`, which the single-file server can't do. The server now bundles the reader's plain JavaScript module copy, and a new test starts the built server before each release.
 - **Clearer skill wording.** The skills say "add `-o`" instead of "pass `-o`", and the ask-deezle skill names the vendor icon pages instead of linking them (the import-icons skill and README still link them). This avoids a false credential warning in the directory check. No change to how the plugin works.
 
 ## 1.0.1 — 2026-10
