@@ -28,7 +28,7 @@ Three ways to get architecture in:
 2. **Import IaC** — a Terraform (`terraform show -json`), Pulumi (`pulumi stack export`),
    Bicep/ARM (`az bicep build` → ARM JSON) export, or a CloudFormation template (JSON or
    YAML). Auto-detected and converted.
-3. **Scan a codebase** — pass a **directory**; it recursively scans Terraform `.tf`
+3. **Scan a codebase** — give it a **directory**; it recursively scans Terraform `.tf`
    source, surfacing third-party providers a state export might miss.
 
 Resources are classified **first-party cloud** / **Marketplace SaaS** (cloud-billed,
@@ -36,10 +36,8 @@ publisher-hosted) / **third-party** (vendor providers like Datadog, Cloudflare) 
 last two get a distinct dashed "external" badge.
 
 **Official vendor icons.** If this plugin has an `/import-icons` skill, it ships open
-icons, and the user can switch to the official ones: they download a set from
-[AWS](https://aws.amazon.com/architecture/icons/),
-[Azure](https://learn.microsoft.com/en-us/azure/architecture/icons/) or
-[Google Cloud](https://cloud.google.com/icons), unzip it, and run `/import-icons <folder>`.
+icons, and the user can switch to the official ones: they download a set from the AWS, Azure or Google Cloud
+icon page (`/import-icons` names each one), unzip it, and run `/import-icons <folder>`.
 The icons stay on their computer under the vendor's own terms. Without that skill, the
 official icons are already built in.
 
@@ -78,13 +76,13 @@ command and MCP tool — the diagram type is detected automatically.
 ## Render it
 
 - **`/diagram <file>`** — render a `.mmd` file or an IaC JSON export.
-- **`render_architecture` MCP tool** — renders an interactive widget inline in chat; pass
+- **`render_architecture` MCP tool** — renders an interactive widget inline in chat; set
   `outputPath` to also write a self-contained HTML file (e.g. for GitHub Copilot, which
   has no inline-widget surface).
 - **CLI** — `node "${CLAUDE_PLUGIN_ROOT}/server/deezle-infra-diagrams.mjs" <input>`.
 
 **Where files go:** by default the saved page lands in the user's **Downloads** folder.
-Choose another spot with `-o "<folder-or-path>"` (CLI) or by passing a directory/full
+Choose another spot with `-o "<folder-or-path>"` (CLI) or by giving a directory/full
 path as `outputPath` (MCP); missing parent folders are created. `-o -` streams to stdout.
 Every output is fully self-contained (no network) and opens in any browser.
 

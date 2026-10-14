@@ -16,7 +16,7 @@ Target: $ARGUMENTS
    `pulumi stack export`, ARM JSON from `az bicep build`, or a CloudFormation template in
    JSON or YAML), or a **directory** to scan as
    a codebase (recursively parses Terraform `.tf` source, surfacing third-party providers a
-   state export may miss). They can also paste Mermaid to pipe via stdin. Pass a directory
+   state export may miss). They can also paste Mermaid to pipe via stdin. Give it a directory
    path the same way as a file. For an ER data model, the user can also just describe it (or
    share a screenshot) — write the `erDiagram` first (see the `er-diagram` skill), then
    render. For a process or decision flow, likewise describe it or share a sketch — write the
@@ -36,8 +36,8 @@ Target: $ARGUMENTS
    another location.
 4. Run the renderer (IaC JSON is auto-detected and converted first; defaults to
    dark + card, so add `--theme light` / `--simple` only if chosen). Omit `-o` to save
-   to Downloads (the renderer names the file from the input, or pass `--title "<name>"`);
-   pass `-o "<folder-or-path>"` for a chosen location:
+   to Downloads (the renderer names the file from the input, or add `--title "<name>"`);
+   add `-o "<folder-or-path>"` for a chosen location:
 
    ```bash
    # default → ~/Downloads/<name>.html

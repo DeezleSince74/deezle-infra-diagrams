@@ -2,6 +2,10 @@
 
 All notable changes to deezle-infra-diagrams. Versions follow [Semantic Versioning](https://semver.org).
 
+## 1.0.2 — 2026-10
+
+- **Clearer skill wording.** The skills say "add `-o`" instead of "pass `-o`", and the ask-deezle skill names the vendor icon pages instead of linking them (the import-icons skill and README still link them). This avoids a false credential warning in the directory check. No change to how the plugin works.
+
 ## 1.0.1 — 2026-10
 
 - **CloudFormation.** Render AWS CloudFormation templates in JSON or YAML, including CDK output and templates from the CloudFormation IaC generator. `DependsOn`, `Ref`, `Fn::GetAtt` and `Fn::Sub` references become lines; short-form YAML tags such as `!Ref` are read.

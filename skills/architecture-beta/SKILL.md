@@ -137,7 +137,7 @@ Pick the one that fits the surface:
    template (JSON or YAML), or omit it to pipe `architecture-beta` on stdin. IaC input is
    auto-detected and converted first.
    **Output saves to the user's Downloads folder by default** (filename from the input
-   or `--title`); pass `-o "<folder-or-path>"` for a chosen location (parents are
+   or `--title`); add `-o "<folder-or-path>"` for a chosen location (parents are
    created), or `-o -` to stream to stdout. Defaults to **dark + card**; add
    `--theme light` and/or `--simple` to change them. The page is fully self-contained
    (no network). The renderer prints the absolute saved path — report it and offer to
