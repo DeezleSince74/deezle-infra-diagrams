@@ -28,3 +28,10 @@ holders. (CC0 covers copyright, not trademark.)
 **Brands without a CC0 source** (e.g. Gong, NetSuite, Starburst) fall back to a category
 glyph. To use an official logo you have the rights to, drop `icons/data-overrides/<key>.svg`
 in and re-run `npm run build:data-icons` (see the README).
+
+# Attribution — open-source software
+
+The plugin's server, its diagram widget and its icon data include open-source packages
+(among them React, React Flow, dagre, zod, ajv, yaml and the MCP SDK).
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) lists every one with its version, its
+license, where it is used, and its full license text.

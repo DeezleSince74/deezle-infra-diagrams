@@ -1,0 +1,10 @@
+[
+  {"ref":"generic:cloud","name":"cloud","provider":"generic","keywords":["cloud"],"aliases":[]},
+  {"ref":"generic:database","name":"database","provider":"generic","keywords":["database"],"aliases":[]},
+  {"ref":"generic:disk","name":"disk","provider":"generic","keywords":["disk"],"aliases":[]},
+  {"ref":"generic:internet","name":"internet","provider":"generic","keywords":["internet"],"aliases":[]},
+  {"ref":"generic:server","name":"server","provider":"generic","keywords":["server"],"aliases":[]},
+  {"ref":"generic:junction","name":"junction","provider":"generic","keywords":["junction"],"aliases":[]},
+  {"ref":"generic:marketplace","name":"marketplace","provider":"generic","keywords":["marketplace","saas","third-party","external"],"aliases":["saas"]},
+  {"ref":"generic:thirdparty","name":"thirdparty","provider":"generic","keywords":["third-party","thirdparty","external","vendor","integration"],"aliases":["external","vendor"]}
+]

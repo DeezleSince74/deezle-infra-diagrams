@@ -2,6 +2,15 @@
 
 All notable changes to deezle-infra-diagrams. Versions follow [Semantic Versioning](https://semver.org).
 
+## 1.1.0 — 2026-10
+
+- **New layout engine.** Diagrams are laid out with dagre instead of ELK. Groups are laid out one at a time, innermost first, so their padding and labels are exact and groups never overlap. Diagrams may look a little different from 1.0.2.
+- **Toolbar and search fit every screen.** The toolbar sits top-left with the search panel just below it, at the same width. On phones both stretch edge to edge.
+- **Names like `Router` now work in architecture-beta.** A new built-in reader follows Mermaid's grammar but accepts names that start with L, R, T or B, which Mermaid's own reader rejects.
+- **Security fix: a label could break a saved page.** A diagram label or source containing `</script>` could end the saved HTML page's script early. Text written into the page is now escaped. This was present since 1.0.0.
+- **Readable code throughout.** The plugin now ships readable files instead of packed ones: the server, its third-party packages (each with its license), and the diagram widget. The widget runs on Preact, a smaller library with the same API as React, and talks to Claude through a small readable client. Every third-party package is credited in `THIRD_PARTY_NOTICES.md`.
+- **Smaller.** The widget code is about a third smaller, and the icon index is split by provider so no file is over 256 KiB.
+
 ## 1.0.2 — 2026-10
 
 - **Fix: the server crashed on start in 1.0.1.** The YAML reader added for CloudFormation called `require("process")`, which the single-file server can't do. The server now bundles the reader's plain JavaScript module copy, and a new test starts the built server before each release.
